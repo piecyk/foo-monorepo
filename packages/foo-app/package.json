@@ -4,8 +4,9 @@
   "license": "MIT",
   "private": true,
   "main": "dist/index.js",
+  "types": "types/src/index.d.ts",
   "scripts": {
-    "tsc": "tsc",
+    "tsc": "tsc -b",
     "build": "rollup -c",
     "watch": "rollup -c -w"
   },

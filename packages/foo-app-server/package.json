@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "tsc": "tsc",
+    "tsc": "tsc -b",
     "build": "rollup -c",
     "watch": "rollup -c -w"
   },

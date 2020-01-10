@@ -1,4 +1,11 @@
 {
-  "extends": "./tsconfig-base.json",
-  "exclude": ["node_modules"]
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/foo-app"
+    },
+    {
+      "path": "./packages/foo-app-server"
+    }
+  ]
 }

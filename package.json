@@ -8,13 +8,13 @@
     "packages/*"
   ],
   "scripts": {
-    "tsc": "tsc",
-    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "tsc": "tsc -b",
+    "watch:tsc": "tsc --build --watch --preserveWatchOutput",
     "build": "rollup -c",
     "watch:build": "rollup -c -w",
     "watch:server": "nodemon ./packages/foo-app-server/dist/index.js --watch ./packages/foo-app-server/dist --watch ./packages/foo-app/dist",
     "start": "npm-run-all --parallel watch:*",
-    "clean": "rm -rf ./packages/*/dist"
+    "clean": "rm -rf ./packages/*/dist & rm -rf ./packages/*/types"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

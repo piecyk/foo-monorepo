@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
@@ -11,12 +14,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "preserve",
-    "noEmit": true,
-    "rootDir": ".",
-    "baseUrl": "./packages",
-    "paths": {
-      "@foo/*": ["./*/src"]
-    }
+    "composite": true,
+    "disableSourceOfProjectReferenceRedirect": true
   }
 }

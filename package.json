@@ -13,7 +13,8 @@
     "build": "rollup -c",
     "watch:build": "rollup -c -w",
     "watch:server": "nodemon ./packages/foo-app-server/dist/index.js --watch ./packages/foo-app-server/dist --watch ./packages/foo-app/dist",
-    "start": "npm-run-all --parallel watch:*"
+    "start": "npm-run-all --parallel watch:*",
+    "clean": "rm -rf ./packages/*/dist"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

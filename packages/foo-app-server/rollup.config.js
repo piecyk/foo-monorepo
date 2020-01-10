@@ -34,7 +34,7 @@ export const config = path => ({
       ]
     })
   ],
-  external: ["express", "@foo/foo-app"],
+  external: ["express", "path", "@foo/foo-app"],
   watch: {
     clearScreen: false
   }

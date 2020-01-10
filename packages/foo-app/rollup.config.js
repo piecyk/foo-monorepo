@@ -61,13 +61,13 @@ export const buildConfig = ({ input, output, external, isNode }) => {
 export const config = p =>
   [
     buildConfig({
-      input: "app-server.ts",
+      input: "app-server.tsx",
       output: "app-server.js",
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "react-dom/server"],
       isNode: true
     }),
     buildConfig({
-      input: "app-browser.ts",
+      input: "app-browser.tsx",
       output: "app-browser.js",
       isNode: false
     }),

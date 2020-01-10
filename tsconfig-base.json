@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "rootDir": ".",
+    "baseUrl": "./packages",
+    "paths": {
+      "@foo/*": ["./*/src"]
+    }
+  }
+}

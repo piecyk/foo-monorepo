@@ -1,5 +1,5 @@
 import path from "path";
-import { appServer } from "@foo/foo-app";
+import { appNode } from "@foo/foo-app";
 import express from "express";
 
 process.on("uncaughtException", e => {
@@ -31,7 +31,7 @@ app.get("*", (req, res) => {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div id="root">${appServer.renderToString(req.url)}</div>
+  <div id="root">${appNode.renderToString(req.url)}</div>
   <script src="app-browser.js"></script>
 </body>
 </html>`

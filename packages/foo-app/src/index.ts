@@ -1,5 +1,5 @@
-import * as appServer from "./app-server";
+import * as appNode from "./app.node";
 
 const outPath = "TODO";
 
-export { appServer, outPath };
+export { appNode, outPath };

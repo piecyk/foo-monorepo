@@ -1,4 +1,4 @@
-import path from "path";
+// import path from "path";
 import { appNode } from "@foo/foo-app";
 import express from "express";
 
@@ -15,12 +15,14 @@ process.on("unhandledRejection", e => {
 const app = express();
 const port = 3000;
 
-const appDir = path.dirname(require.resolve("@foo/foo-app/package.json"));
-const distDir = path.resolve(appDir, "dist");
+// const appDir = path.dirname(require.resolve("@foo/foo-app/package.json"));
+// const distDir = path.resolve(appDir, "dist");
+// console.log({distDir})
+app.use(
+  express.static("/Users/piecyk/work/my/foo-monorepo/packages/foo-app/dist")
+);
 
-app.use(express.static(distDir));
-
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).send(
     `<!doctype html>
 <html lang="">
@@ -32,7 +34,7 @@ app.get("*", (req, res) => {
 </head>
 <body>
   <div id="root">${appNode.renderToString(req.url)}</div>
-  <script src="app-browser.js"></script>
+  <script src="/app.browser.js"></script>
 </body>
 </html>`
   );

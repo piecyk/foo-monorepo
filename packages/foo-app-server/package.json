@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "tsc": "tsc -b",
-    "build": "rollup -c",
-    "watch": "rollup -c -w"
+    "build": "webpack",
+    "watch": "webpack --watch --progress"
   },
   "dependencies": {
     "@foo/foo-app": "0.0.0",

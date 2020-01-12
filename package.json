@@ -10,11 +10,12 @@
   "scripts": {
     "tsc": "tsc -b",
     "watch:tsc": "tsc --build --watch --preserveWatchOutput",
-    "build": "rollup -c",
-    "watch:build": "rollup -c -w",
-    "watch:server": "nodemon ./packages/foo-app-server/dist/index.js --watch ./packages/foo-app-server/dist --watch ./packages/foo-app/dist",
-    "start": "npm-run-all --parallel watch:*",
-    "clean": "rm -rf ./packages/*/dist & rm -rf ./packages/*/types"
+    "build:js": "yarn wsrun --stages build",
+    "build": "npm-run-all clean tsc build:js",
+    "clean": "rm -rf ./packages/*/dist & rm -rf ./packages/*/types",
+    "app:server": "nodemon --delay 250ms --watch ./packages/foo-app-server/dist --watch ./packages/foo-app/dist ./packages/foo-app-server/dist/index.js",
+    "app:watch": "yarn wsrun --no-prefix -p @foo/foo-app-server -r watch",
+    "start": "npm-run-all --parallel watch:tsc app:watch app:server"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
@@ -23,13 +24,13 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.7",
-    "@rollup/plugin-commonjs": "^11.0.1",
-    "@rollup/plugin-node-resolve": "^7.0.0",
-    "@rollup/plugin-replace": "^2.3.0",
+    "babel-loader": "^8.0.6",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
-    "rollup": "^1.29.0",
-    "rollup-plugin-babel": "^4.3.3",
-    "typescript": "^3.7.4"
-  }
+    "typescript": "^3.7.4",
+    "webpack": "^5.0.0-beta.11",
+    "webpack-cli": "^3.3.10",
+    "wsrun": "^5.2.0"
+  },
+  "dependencies": {}
 }

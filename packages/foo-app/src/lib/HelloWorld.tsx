@@ -1,8 +1,14 @@
 import React from "react";
+import Header from "./Header";
 
 class HellWorld extends React.Component<{ name: string }> {
   render() {
-    return <div>Hello from {this.props.name}</div>;
+    return (
+      <div>
+        <Header label={"Hi"} />
+        hello from {this.props.name}
+      </div>
+    );
   }
 }
 

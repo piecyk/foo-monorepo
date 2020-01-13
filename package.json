@@ -13,7 +13,7 @@
     "build:js": "yarn wsrun --stages build",
     "build": "npm-run-all clean tsc build:js",
     "clean": "rm -rf ./packages/*/dist & rm -rf ./packages/*/types",
-    "app:server": "node ./scripts/createEmptyFile.js --packageName=foo-app-server --output=index.js && nodemon packages/foo-app-server/dist/index.js --delay 250ms --watch packages/foo-app/dist",
+    "app:server": "node ./scripts/createEmptyFile.js --folders=foo-app-server,foo-app --file=foo-app-server/dist/index.js && nodemon --delay 250ms --watch ./packages/foo-app/dist/**/* --watch ./packages/foo-app-server/dist/**/* --exec node ./packages/foo-app-server/dist/index.js",
     "app:watch": "yarn wsrun --no-prefix -p @foo/foo-app-server -r watch",
     "start": "npm-run-all --parallel watch:tsc app:watch app:server"
   },

@@ -1,18 +1,23 @@
 const fs = require("fs");
-const { fromPaths } = require("./createConfig");
-const path = require("path");
+const { fromPackages } = require("./createConfig");
 
-let { packageName, output } = process.argv.slice(2).reduce((acc, v) => {
+let { folders, file } = process.argv.slice(2).reduce((acc, v) => {
   const [key, value] = v.split("=");
-  return { ...acc, [key.replace("--", "")]: value };
+  const maybeArray = value.split(",");
+
+  return {
+    ...acc,
+    [key.replace("--", "")]:
+      maybeArray.length === 1 ? maybeArray[0] : maybeArray
+  };
 }, {});
 
-const { distPath } = fromPaths({ packageName });
+const distPaths = folders.map(p => fromPackages(p, "dist"));
 
-if (!fs.existsSync(distPath)) {
-  fs.mkdirSync(distPath);
-}
+distPaths.forEach(distPath => {
+  if (!fs.existsSync(distPath)) {
+    fs.mkdirSync(distPath);
+  }
+});
 
-const outPath = path.join(distPath, output);
-
-fs.closeSync(fs.openSync(outPath, "a"));
+fs.closeSync(fs.openSync(fromPackages(file), "a"));

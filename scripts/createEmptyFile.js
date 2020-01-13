@@ -1,14 +1,12 @@
 const fs = require("fs");
 const { fromPackages } = require("./createConfig");
 
-let { folders, file } = process.argv.slice(2).reduce((acc, v) => {
+let { folders, files } = process.argv.slice(2).reduce((acc, v) => {
   const [key, value] = v.split("=");
-  const maybeArray = value.split(",");
 
   return {
     ...acc,
-    [key.replace("--", "")]:
-      maybeArray.length === 1 ? maybeArray[0] : maybeArray
+    [key.replace("--", "")]: value.split(",")
   };
 }, {});
 
@@ -20,4 +18,6 @@ distPaths.forEach(distPath => {
   }
 });
 
-fs.closeSync(fs.openSync(fromPackages(file), "a"));
+files.forEach(file => {
+  fs.closeSync(fs.openSync(fromPackages(file), "a"));
+});

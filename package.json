@@ -13,9 +13,9 @@
     "build:js": "yarn wsrun --stages build",
     "build": "npm-run-all clean tsc build:js",
     "clean": "rm -rf ./packages/*/dist & rm -rf ./packages/*/types",
-    "app:server": "nodemon --delay 250ms --watch ./packages/foo-app-server/dist --watch ./packages/foo-app/dist ./packages/foo-app-server/dist/index.js",
+    "app:server": "nodemon --delay 250ms --watch ./packages/foo-app-server/dist --watch ./packages/foo-app/dist --exec node ./packages/foo-app-server/dist/index.js",
     "app:watch": "yarn wsrun --no-prefix -p @foo/foo-app-server -r watch",
-    "start": "npm-run-all --parallel watch:tsc app:watch app:server"
+    "start": "node ./scripts/createEmptyFile.js --packageName=foo-app-server --output=index.js && npm-run-all --parallel watch:tsc app:watch app:server"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
